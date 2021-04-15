@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import Employee from './employ';
+import { map, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,20 @@ export class FirebaseService {
   }
 
   get_Allemployee() {
-    return this.fireservices.collection('Employee').snapshotChanges();
+    return this.fireservices
+      .collection('Employee')
+      .snapshotChanges()
+      .pipe(
+        map((snaps) =>
+          snaps.map((snap) => {
+            return {
+              id: snap.payload.doc.id,
+              ...(snap.payload.doc.data() as {}),
+            };
+          })
+        ),
+        first()
+      );
   }
 
   update_employee(recordid: any, record: Employee) {

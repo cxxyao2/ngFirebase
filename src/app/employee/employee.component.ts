@@ -22,8 +22,8 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.firebaseService.get_Allemployee().subscribe((data) => {
-      this.employee = data;
-      console.log(this.employee);
+      // this.employee = data;
+      console.log(data);
     });
   }
 
@@ -43,7 +43,7 @@ export class EmployeeComponent implements OnInit {
         this.employeeName = '';
         this.employeeAge = 0;
         this.employeeAddress = '';
-        console.log('recrod is ', res);
+        console.log('added record is ', res.id);
         this.message = 'Employee data save Done';
       })
       .catch((error) => {
