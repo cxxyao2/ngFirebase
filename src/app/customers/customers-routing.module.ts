@@ -8,6 +8,7 @@ import { OrderReportComponent } from './order-report/order-report.component';
 
 import { AuthGuard } from '../auth/auth.guard';
 import { CanDeactivateGuard } from '../can-deactivate.guard';
+import { CustomerResolverService } from './customer-resolver.service';
 
 const routes: Routes = [
   {
@@ -32,6 +33,9 @@ const routes: Routes = [
     path: 'customer/:id',
     component: CustomerComponent,
     canDeactivate: [CanDeactivateGuard],
+    resolve: {
+      customer: CustomerResolverService,
+    },
   },
 ];
 

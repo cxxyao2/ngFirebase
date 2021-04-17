@@ -3,6 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { PageNoteFoundComponent } from './page-note-found/page-note-found.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'employee', component: EmployeeComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
     path: 'customers',
     loadChildren: () =>
       import('./customers/customers.module').then((m) => m.CustomersModule),
+    canLoad: [AuthGuard],
   },
   {
     path: 'orders',

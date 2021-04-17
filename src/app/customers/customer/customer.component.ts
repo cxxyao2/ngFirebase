@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { Customer } from '../../customer';
 import { DialogService } from '../../dialog.service';
 
-
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -50,25 +49,11 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap
-      .pipe(
-        switchMap((params: ParamMap) => {
-          this.recordId = params.get('id') || '';
-          return this.service.doc('Customer/' + params.get('id') || '').get();
-        })
-      )
-      .subscribe(
-        (item) => {
-          this.customer = item.data() as Customer;
-          // console.log('data is', item.data(), ' id is', item.id);
-        },
-        (err) => {
-          console.log('error is', err);
-        },
-        () => {
-          console.log('get customer');
-        }
-      );
+    this.route.data.subscribe((data) => {
+      console.log('data is ', data);
+      this.customer = data.customer as Customer;
+      console.log('hi', this.customer);
+    });
   }
 
   cancel() {
