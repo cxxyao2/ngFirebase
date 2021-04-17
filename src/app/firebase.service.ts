@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import Employee from './employ';
 import { map, first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -30,9 +31,12 @@ export class FirebaseService {
         first()
       );
   }
+  get_employee(recordId:string) {
+    return this.fireservices.doc('Employee/' + recordId);
+  }
 
-  update_employee(recordid: any, record: Employee) {
-    this.fireservices.doc('Employee/' + recordid).update(record);
+  update_employee(recordId: any, record: Employee) {
+    this.fireservices.doc('Employee/' + recordId).update(record);
   }
 
   delete_employee(record_id: any) {

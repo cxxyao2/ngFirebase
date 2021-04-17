@@ -1,0 +1,15 @@
+<p>customer detail</p>
+<div>
+  <dl>
+    <dt>{{ customer?.name }}</dt>
+    <dd>{{ customer?.address }}</dd>
+    <dt>
+      <label for="newName">New Name</label
+      ><input id="newName" type="text" [(ngModel)]="newName" />
+    </dt>
+    <dd>address: Canada</dd>
+  </dl>
+  <!--  relative path  -->
+  <button (click)="save()">save new name</button>
+  <button (click)="cancel()">cancel</button>
+</div>

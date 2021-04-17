@@ -12,6 +12,11 @@ import { AppComponent } from './app.component';
 import { SvgChartComponent } from './svg-chart/svg-chart.component';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PageNoteFoundComponent } from './page-note-found/page-note-found.component';
+import { ComposeMessageComponent } from './compose-message/compose-message.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,9 @@ import { EmployeeComponent } from './employee/employee.component';
     SvgChartComponent,
     PieChartComponent,
     EmployeeComponent,
+    PageNoteFoundComponent,
+    ComposeMessageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +37,8 @@ import { EmployeeComponent } from './employee/employee.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

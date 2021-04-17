@@ -1,0 +1,16 @@
+<p>customers works!</p>
+<div *ngFor="let customer of customerList$ | async">
+  <div>
+    {{ customer.name }} &nbsp;&nbsp;
+    <span style="color: coral"
+      ><button [routerLink]="['/customers/customer', customer.customerId]">
+        {{ customer.customerId }}
+      </button>
+    </span>
+  </div>
+</div>
+
+<button [routerLink]="['/customers/creport']">customers report</button>
+<button [routerLink]="['/customers/oreport']">order report</button>
+
+<router-outlet></router-outlet>
