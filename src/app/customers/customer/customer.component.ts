@@ -41,6 +41,7 @@ export class CustomerComponent implements OnInit {
         name: this.newName,
       })
       .then(() => {
+        this.newName = '';
         this.backToCenter();
       })
       .catch((err) => {
@@ -49,6 +50,7 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.recordId = this.route.snapshot.paramMap.get('id') || '';
     this.route.data.subscribe((data) => {
       console.log('data is ', data);
       this.customer = data.customer as Customer;
@@ -65,5 +67,33 @@ export class CustomerComponent implements OnInit {
     this.router.navigate(['../../', { foo: 'foo' }], {
       relativeTo: this.route,
     });
+  }
+
+  delete(): void {
+    this.service
+      .doc('Customer/' + this.recordId)
+      .delete()
+      .then((result) => {
+        console.log('delete result is ', JSON.stringify(result));
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+  }
+
+  add(): void {
+    this.service
+      .collection('Customer')
+      .add({
+        name: 'Lau ki Loogn',
+        value: 500000,
+        address: 'Japan Musium',
+      })
+      .then(() => {
+        console.log('add ok ');
+      })
+      .catch((err: any) => {
+        console.log('err', err);
+      });
   }
 }

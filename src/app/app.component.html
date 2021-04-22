@@ -1,10 +1,1 @@
-<h1>{{ title }}</h1>
-<nav>
-  <a routerLink="/customers" routerLinkActive="active-link">Customers</a>
-  <a routerLink="/orders" routerLinkActive="active-link">Orders</a>
-  <a routerLink="">Home</a>
-  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
-</nav>
-
-<router-outlet></router-outlet>
-<router-outlet name="popup"></router-outlet>
+<app-vote (voteChanged)="onVote($event)"></app-vote> <app-rxjs></app-rxjs>

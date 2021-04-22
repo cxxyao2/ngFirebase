@@ -1,0 +1,24 @@
+<p>rxjs works!</p>
+<div>
+  {{ message$ | async }}
+</div>
+<hr style="border: 2px solid blue" />
+<div>
+  <button (click)="concatAllTest()">concat All</button>
+  <button (click)="unsubscribe()">unConcat</button>
+  <label for="salaray">salary is:</label>
+  <input [(ngModel)]="salary" id="salary" type="number" />
+  <div>{{ salary | exponentialStrength: 2 }}</div>
+  <button (click)="condition = !condition">toggle structural directive</button>
+  <button (click)="concatAllTest2()">concatStart</button>
+</div>
+<div>concat is {{ concat$ | async }}</div>
+<p [appHighlight]="myColor" *appStructure="condition">
+  (A)this paragraph is displayed because the condition is false.
+</p>
+<p [appHighlight]="myColor" *appStructure="!condition">
+  (B)this paragraph is not displayed because the condition is false.
+</p>
+<p appHighlight="coral" defaultColor="green">something is gray?</p>
+
+<input #box [appHighlight]="box.value" value="cyan" />

@@ -8,4 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'ng-firebase';
+
+  onVote(newVote: any) {
+    console.log('vote changed', newVote);
+  }
 }

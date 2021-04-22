@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -17,6 +18,11 @@ import { PageNoteFoundComponent } from './page-note-found/page-note-found.compon
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthModule } from './auth/auth.module';
+import { VoteComponent } from './vote/vote.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
+import { ExponentialStrengthPipe } from './exponential-strength.pipe';
+import { StructureDirective } from './structure.directive';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -27,10 +33,17 @@ import { AuthModule } from './auth/auth.module';
     PageNoteFoundComponent,
     ComposeMessageComponent,
     LoginComponent,
+    VoteComponent,
+    RxjsComponent,
+    ExponentialStrengthPipe,
+    StructureDirective,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

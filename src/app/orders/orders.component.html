@@ -1,1 +1,12 @@
 <p>orders works!</p>
+<ul>
+  <li *ngFor="let order of orders; let i = index">
+    Item&nbsp; {{ i }} &nbsp;&nbsp;{{ order._id }}
+  </li>
+</ul>
+<div>
+  <label for="orderId">enter orderId:</label>
+  <input #orderId id="orderId" type="text" />
+  <button (click)="addOrder(orderId.value)">add order</button>
+  <button (click)="deleteOrder(orderId.value)">delete order</button>
+</div>

@@ -1,1 +1,9 @@
-<p>login works!</p>
+<p>login</p>
+<div>
+  <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="name" required />
+    <input type="email" formControlName="email" required />
+    <button type="submit">Submit</button>
+    <button type="button" (click)="formDir.resetForm({})">Reset</button>
+  </form>
+</div>
