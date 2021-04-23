@@ -23,6 +23,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { ExponentialStrengthPipe } from './exponential-strength.pipe';
 import { StructureDirective } from './structure.directive';
 import { HighlightDirective } from './highlight.directive';
+import { LightswitchComponent } from './lightswitch/lightswitch.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { HighlightDirective } from './highlight.directive';
     ExponentialStrengthPipe,
     StructureDirective,
     HighlightDirective,
+    LightswitchComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,

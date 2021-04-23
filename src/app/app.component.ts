@@ -12,4 +12,8 @@ export class AppComponent {
   onVote(newVote: any) {
     console.log('vote changed', newVote);
   }
+
+  printLightName(name: string) {
+    console.log('light name is', name);
+  }
 }
