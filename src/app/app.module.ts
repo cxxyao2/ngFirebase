@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -25,6 +25,7 @@ import { StructureDirective } from './structure.directive';
 import { HighlightDirective } from './highlight.directive';
 import { LightswitchComponent } from './lightswitch/lightswitch.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LoggerInterceptor } from './http-interceptors/logger.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     AuthModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoggerInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

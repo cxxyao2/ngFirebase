@@ -7,6 +7,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Order, OrderService } from './order.service';
 import { of, defer } from 'rxjs';
+import { expressionType } from '@angular/compiler/src/output/output_ast';
 
 // order CRUD create update read delete
 fdescribe('OrderService CRUD', () => {
@@ -109,5 +110,30 @@ fdescribe('OrderService CRUD', () => {
       status: 404,
       statusText: 'No Found',
     });
+  });
+
+  it('can test for network ', () => {
+    const errorMsg = 'simulated network error';
+
+    http.get<Order[]>(baseUrl).subscribe(
+      (data) => fail('should have failed with the network error'),
+      (error: HttpErrorResponse) => {
+        expect(error.error.message).toEqual(errorMsg, 'message');
+      }
+    );
+
+    const req = httpTestingController.expectOne(baseUrl);
+
+    // Create mock ErrorEvent, raised when something goes wrong
+    // at the network level.
+    // Connection timeout, DNS error, offline,etc
+    const errorEvent = new ErrorEvent('so bad', {
+      message: errorMsg,
+      filename: ' OrderService.ts',
+      lineno: 21,
+      colno: 21,
+    });
+
+    req.error(errorEvent);
   });
 });
