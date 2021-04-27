@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { of, Observable, interval, from, timer } from 'rxjs';
-import { concatAll, map, switchMap, take } from 'rxjs/operators';
+import { of, pipe, Observable, interval, from, timer } from 'rxjs';
+import { concatAll, filter, map, switchMap, take } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
 
 @Component({
   selector: 'app-rxjs',
@@ -56,5 +57,23 @@ export class RxjsComponent implements OnInit {
       // map((val)=>of(val));
       //concatAll();
     );
+  }
+
+  getOrdersByAjax() {
+    const apiData = ajax('http://localhost:5000/api/orders');
+    apiData.subscribe((res) => console.log(res.status, res.response));
+  }
+
+  getByPipe() {
+    const nums = of(1, 2, 3, 4, 5);
+
+    const squareOddVals = pipe(
+      filter((n: number) => n % 2 !== 0),
+      map((n) => n * n)
+    );
+
+    const squareOdd = squareOddVals(nums);
+
+    squareOdd.subscribe((x) => console.log(x));
   }
 }

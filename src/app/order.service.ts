@@ -10,6 +10,9 @@ export interface Order {
   price: number;
   coupon?: string;
   _id?: string;
+  customerPaid?: boolean;
+  enRoute?: boolean;
+  customerReceived?: boolean;
 }
 
 @Injectable({
@@ -36,10 +39,17 @@ export class OrderService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  addOrder(order: any) {
+  updateOrder(order: Order): Observable<Order> {
+    const url = `${this.configUrl}/${order._id}`;
+    return this.http
+      .put<Order>(url, order)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  addOrder(order: Order): Observable<Order> {
     // name ,categoryId='600103a5ffa4a7376471d64f'
     // code ?
-    return this.http.post(this.configUrl, order).pipe(
+    return this.http.post<Order>(this.configUrl, order).pipe(
       retry(1),
       catchError((err: any, caught: Observable<any>) => {
         return throwError(this.handleError(err, caught));

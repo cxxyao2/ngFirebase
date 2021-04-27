@@ -1,9 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import {
+  ComponentFixture,
+  ComponentFixtureAutoDetect,
+  TestBed,
+} from '@angular/core/testing';
 
 import { WelcomeComponent } from './welcome.component';
 import { AuthService } from '../auth.service';
-import { DebugElement } from '@angular/core';
 
 class MockAuthService {
   user = { name: 'Mike' };
@@ -12,7 +14,7 @@ class MockAuthService {
   }
 }
 
-fdescribe('WelcomeComponent', () => {
+fdescribe('WelcomeComponent 2 ', () => {
   let component: WelcomeComponent;
   let service: AuthService;
   let fixture: ComponentFixture<WelcomeComponent>;
@@ -20,8 +22,9 @@ fdescribe('WelcomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      declarations: [WelcomeComponent],
       providers: [
-        WelcomeComponent,
+        { provide: ComponentFixtureAutoDetect, useValue: true },
         { provide: AuthService, useClass: MockAuthService },
       ],
     }).compileComponents();
@@ -31,6 +34,7 @@ fdescribe('WelcomeComponent', () => {
     fixture = TestBed.createComponent(WelcomeComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(AuthService);
+    // method2:  service = fixture.debugElement.injector.get(UserService);
     div1 = fixture.nativeElement.querySelector('div');
   });
 
@@ -38,40 +42,7 @@ fdescribe('WelcomeComponent', () => {
     expect(component).toBeDefined();
   });
 
-  it('should not have welcome message after construction', () => {
-    expect(component.welcome).toBeUndefined('welcome is undefined');
-  });
-
-  it('should welcome logged in after Angular calls ngOnInit', () => {
-    component.ngOnInit();
-    expect(component.welcome).toContain(service.user.name, 'user have name');
-  });
-
-  it('should contain welcome works', () => {
-    const welcomeElement: HTMLElement = fixture.nativeElement;
-    expect(welcomeElement.textContent).toContain('welcome works');
-  });
-
-  it('should find the <p> with fixture.debugElement.nativeElement querySelector', () => {
-    const welcomeDe: DebugElement = fixture.debugElement;
-    const welcomeEl: HTMLElement = welcomeDe.nativeElement;
-    const para = welcomeEl.querySelector('p');
-    expect(para?.textContent).toContain('welcome works');
-  });
-
-  it('should find the <p> with fixture.debugElement.query(By.css)', () => {
-    const welcomeDe: DebugElement = fixture.debugElement;
-    const paragraphDe = welcomeDe.query(By.css('p'));
-    const p: HTMLElement = paragraphDe.nativeElement;
-    expect(p.textContent).toContain('welcome works');
-  });
-
-  it('should no content in the Dom after createComponent()', () => {
-    expect(div1.innerHTML).toEqual('');
-  });
-
-  it('should display title after detectChanges()', () => {
-    fixture.detectChanges();
+  it('should display original category no need deleteChanges', () => {
     expect(div1.innerHTML).toContain(component.category);
   });
 });

@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-light-switch',
   template: ` <button (click)="clicked()">Click me</button>
     <span>{{ message }}</span>
-    <div><button (click)="print()">print</butt</div>`,
+    <div><button (click)="print()">print</button></div>`,
 })
 export class LightswitchComponent implements OnInit {
   @Input() lightName!: string;
