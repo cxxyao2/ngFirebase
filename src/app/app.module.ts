@@ -29,6 +29,7 @@ import { LoggerInterceptor } from './http-interceptors/logger.interceptor';
 import { HeroComponent } from './heros/hero/hero.component';
 import { HerolistComponent } from './heros/herolist/herolist.component';
 import { HeroNameBannerComponent } from './heros/hero-name-banner/hero-name-banner.component';
+import { TwainComponent } from './twain/twain.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { HeroNameBannerComponent } from './heros/hero-name-banner/hero-name-bann
     HeroComponent,
     HerolistComponent,
     HeroNameBannerComponent,
+    TwainComponent,
   ],
   imports: [
     BrowserModule,

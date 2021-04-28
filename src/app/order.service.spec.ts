@@ -136,4 +136,18 @@ fdescribe('OrderService CRUD', () => {
 
     req.error(errorEvent);
   });
+
+  it('should be ok returning no orders', () => {
+    service
+      .getOrders()
+      .subscribe(
+        (orders) =>
+          expect(orders.length).toEqual(0, 'should ok when no orders'),
+        fail
+      );
+
+    const req = httpTestingController.expectOne(baseUrl);
+
+    req.flush([]); // response with no orders
+  });
 });
