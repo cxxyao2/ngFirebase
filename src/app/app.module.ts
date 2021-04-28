@@ -26,6 +26,9 @@ import { HighlightDirective } from './highlight.directive';
 import { LightswitchComponent } from './lightswitch/lightswitch.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoggerInterceptor } from './http-interceptors/logger.interceptor';
+import { HeroComponent } from './heros/hero/hero.component';
+import { HerolistComponent } from './heros/herolist/herolist.component';
+import { HeroNameBannerComponent } from './heros/hero-name-banner/hero-name-banner.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { LoggerInterceptor } from './http-interceptors/logger.interceptor';
     HighlightDirective,
     LightswitchComponent,
     WelcomeComponent,
+    HeroComponent,
+    HerolistComponent,
+    HeroNameBannerComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ fdescribe('LoggerInterceptor', () => {
   let httpTestingController: HttpTestingController;
   let mockLoggerSvc: any;
   let httpClient: HttpClient;
+  const baseUrl = 'http://localhost:5000/api';
 
   beforeEach(() => {
     mockLoggerSvc = {

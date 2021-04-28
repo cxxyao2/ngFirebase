@@ -1,7 +1,13 @@
-<app-vote (voteChanged)="onVote($event)"></app-vote>
+<h1>{{ title }}</h1>
+<nav>
+  <a routerLink="/herolist" routerLinkActive="active-link">Hero list</a>
+  <a routerLink="/customers" routerLinkActive="active-link">Customers</a>
+  <a routerLink="/orders" routerLinkActive="active-link">Orders</a>
+  <a routerLink="/login" routerLinkActive="active-link">Login</a>
 
-<app-light-switch
-  [lightName]="'Philippe'"
-  (selected)="printLightName($event)"
-></app-light-switch>
- <app-rxjs></app-rxjs>
+  <a routerLink="">Home</a>
+  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+</nav>
+
+<router-outlet></router-outlet>
+<router-outlet name="popup"></router-outlet>
