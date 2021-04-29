@@ -14,7 +14,6 @@ import { Quote } from './quote';
       </ul>
     </div>
     <button (click)="getQuote()">Next quote</button>
-    <button (click)="emitWithStart()">startWith</button>
     <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>`,
   styles: [
     `
@@ -28,7 +27,7 @@ import { Quote } from './quote';
   ],
 })
 export class TwainComponent implements OnInit {
-  errorMessage!: string;
+  errorMessage: string | null = null;
   quotes$!: Observable<Quote[]>;
   constructor(private tservice: TwainService) {}
 
@@ -39,7 +38,7 @@ export class TwainComponent implements OnInit {
   getQuote() {
     this.errorMessage = '';
     this.quotes$ = this.tservice.getQuote().pipe(
-      startWith([{ id: 0, quote: 'greate minds are alike' }]),
+      startWith([{ id: 0, quote: 'great minds are alike' }]),
       take(2),
       catchError((err: any) => {
         setTimeout(() => {

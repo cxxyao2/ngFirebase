@@ -3,14 +3,16 @@ import {
   fakeAsync,
   TestBed,
   tick,
+  waitForAsync,
 } from '@angular/core/testing';
 import 'zone.js/dist/zone-patch-rxjs-fake-async';
+import { asyncData, asyncError } from '../testing/async-observable-helpers';
 
 import { TwainComponent } from './twain.component';
 import { Quote } from './quote';
 import { TwainService } from './twain.service';
 import { interval, of, throwError } from 'rxjs';
-import { delay, take } from 'rxjs/operators';
+import { delay, last, take } from 'rxjs/operators';
 
 describe('TwainComponent', () => {
   let component: TwainComponent;
@@ -23,7 +25,7 @@ describe('TwainComponent', () => {
     testQuotes = [{ id: 0, quote: 'Test Quote' }];
     const twainService = jasmine.createSpyObj('TwainService', ['getQuote']);
     // Make the spy return a synchronous Observable with the test data
-    getQuoteSpy = twainService.getQuote.and.returnVale(of(testQuotes));
+    getQuoteSpy = twainService.getQuote.and.returnVale(asyncData(testQuotes));
 
     await TestBed.configureTestingModule({
       declarations: [TwainComponent],
@@ -38,6 +40,21 @@ describe('TwainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(
+    'should show quote after getQuote(async)',
+    waitForAsync(() => {
+      fixture.detectChanges(); // ngInit
+      expect(quoteEl.textContent).toContain(testQuotes[0].quote);
+
+      fixture.whenStable().then(() => {
+        // wait for async getQuote
+        fixture.detectChanges();
+        expect(quoteEl.textContent).toContain('It is time');
+        expect(component.errorMessage).toBeNull('should not show error');
+      });
+    })
+  );
 
   it('should show quote after component initialized', () => {
     fixture.detectChanges(); // onInit();
@@ -111,7 +128,7 @@ describe('TwainComponent', () => {
 
   it('should get Date diff correctly in fakeAsync with rxjs scheduler', fakeAsync(() => {
     // need to add `import 'zone.js/dist/zone-patch-rxjs-fake-async'
-    // to patch rxjs scheduler
+    // to patch rxjs scheduler;
     let result: any;
     result = null;
     of('hello')
@@ -135,4 +152,15 @@ describe('TwainComponent', () => {
     tick(1000);
     expect(dateDiff).toBe(2000);
   }));
+
+  it('should show last quote(quote done)', (done: DoneFn) => {
+    fixture.detectChanges();
+
+    component.quotes$.pipe(last()).subscribe(() => {
+      fixture.detectChanges();
+      expect(quoteEl.textContent).toContain('It is time');
+      expect(component.errorMessage).toBeNull('should not show error');
+      done();
+    });
+  });
 });

@@ -30,6 +30,7 @@ import { HeroComponent } from './heros/hero/hero.component';
 import { HerolistComponent } from './heros/herolist/herolist.component';
 import { HeroNameBannerComponent } from './heros/hero-name-banner/hero-name-banner.component';
 import { TwainComponent } from './twain/twain.component';
+import { CanvasComponent } from './canvas/canvas.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TwainComponent } from './twain/twain.component';
     HerolistComponent,
     HeroNameBannerComponent,
     TwainComponent,
+    CanvasComponent,
   ],
   imports: [
     BrowserModule,
