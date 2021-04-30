@@ -1,5 +1,7 @@
-<p>hero-name-banner works!</p>
-<p>{{ heroName | uppercase }} is a beautiful name</p>
-<h1>{{ title }}</h1>
-<p><input type="text" [formControl]="nameControl" /></p>
-<span>{{ nameControl.value | titlecase }}</span>
+<div class="banner" (click)="changeValue()">
+  <p>{{ heroName | uppercase }} is a beautiful name</p>
+  <h1>{{ title }}</h1>
+  <p><input type="text" [formControl]="nameControl" /></p>
+  <span>{{ nameControl.value | titlecase }}</span>
+  <button>changeValue</button>
+</div>

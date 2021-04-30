@@ -4,7 +4,7 @@
     <span>the&nbsp; {{ i }} &nbsp;hero: &nbsp;</span>
     <span>id : {{ hero.id }}</span>
     <span>name: {{ hero.name }}</span>
-    <app-hero-name-banner [heroName]="hero.name"></app-hero-name-banner>
+    <app-hero-name-banner [heroName]="hero.name" (selected)="gotoNewValue($event)"></app-hero-name-banner>
     <hr />
     <button (click)="gotoHero(hero.id)">Hero Details</button>
   </div>

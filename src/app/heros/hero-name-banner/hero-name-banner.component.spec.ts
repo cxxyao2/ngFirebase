@@ -1,9 +1,11 @@
+import { DebugElement } from '@angular/core';
 import {
   ComponentFixture,
   TestBed,
   ComponentFixtureAutoDetect,
 } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 import { HeroNameBannerComponent } from './hero-name-banner.component';
 
@@ -11,6 +13,8 @@ fdescribe('HeroNameBannerComponent', () => {
   let component: HeroNameBannerComponent;
   let fixture: ComponentFixture<HeroNameBannerComponent>;
   let h1: HTMLElement;
+  let bannerDe: DebugElement;
+  let bannerEl: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -23,12 +27,24 @@ fdescribe('HeroNameBannerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeroNameBannerComponent);
     component = fixture.componentInstance;
+
+    //find the banner's DebugElement and Element
+    bannerDe = fixture.debugElement.query(By.css('.banner'));
+    bannerEl = bannerDe.nativeElement;
     h1 = fixture.nativeElement.querySelector('h1');
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should raise selected event when clicked(triggerEventHandler)', () => {
+    let selectedNumber = 0;
+    component.selected.subscribe((value: number) => (selectedNumber = value));
+
+    bannerDe.triggerEventHandler('click', null); // bannerEL.click();
+    expect(selectedNumber).toBe(123);
   });
 
   it('should display original title', () => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Hero } from '../../service/hero';
 
@@ -9,15 +9,23 @@ import { Hero } from '../../service/hero';
   styleUrls: ['./herolist.component.css'],
 })
 export class HerolistComponent implements OnInit {
+  heroValue = 0;
   heros: Hero[] = [
     { id: 1, name: 'Denise' },
     { id: 2, name: 'Mike' },
   ];
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   gotoHero(id: number): void {
-    this.router.navigate(['/hero', id]);
+    // this.router.navigate(['/hero', id]);
+    const url = `/hero/${id}`;
+    this.router.navigateByUrl(url);
+  }
+
+  gotoNewValue(newValue: any): void {
+    this.heroValue = newValue;
+    console.log('newValue is ,', newValue);
   }
 }
