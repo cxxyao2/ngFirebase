@@ -1,11 +1,10 @@
-<p>hero list</p>
-<div style="width: 80%; background-color: cadetblue">
-  <div *ngFor="let hero of heros; let i = index">
-    <span>the&nbsp; {{ i }} &nbsp;hero: &nbsp;</span>
-    <span>id : {{ hero.id }}</span>
-    <span>name: {{ hero.name }}</span>
-    <app-hero-name-banner [heroName]="hero.name" (selected)="gotoNewValue($event)"></app-hero-name-banner>
-    <hr />
-    <button (click)="gotoHero(hero.id)">Hero Details</button>
-  </div>
-</div>
+<h2 appHighlight="gold">hero list</h2>
+<ul class="heroes">
+  <li
+    *ngFor="let hero of heroes; let i = index"
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)"
+  >
+    <span class="badge">{{ hero.id }}&nbsp;{{ hero.name }}</span>
+  </li>
+</ul>

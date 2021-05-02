@@ -1,5 +1,3 @@
-import { HttpParams } from '@angular/common/http';
-import { partitionArray } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 

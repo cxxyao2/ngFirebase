@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 import { HeroNameBannerComponent } from './hero-name-banner.component';
 
-fdescribe('HeroNameBannerComponent', () => {
+describe('HeroNameBannerComponent', () => {
   let component: HeroNameBannerComponent;
   let fixture: ComponentFixture<HeroNameBannerComponent>;
   let h1: HTMLElement;

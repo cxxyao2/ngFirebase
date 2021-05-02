@@ -10,7 +10,8 @@ import { Hero } from '../../service/hero';
 })
 export class HerolistComponent implements OnInit {
   heroValue = 0;
-  heros: Hero[] = [
+  selectedHero!: Hero;
+  heroes: Hero[] = [
     { id: 1, name: 'Denise' },
     { id: 2, name: 'Mike' },
   ];
@@ -18,9 +19,10 @@ export class HerolistComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  gotoHero(id: number): void {
+  onSelect(hero: Hero): void {
     // this.router.navigate(['/hero', id]);
-    const url = `/hero/${id}`;
+    this.selectedHero = hero;
+    const url = `/hero/${hero.id}`;
     this.router.navigateByUrl(url);
   }
 

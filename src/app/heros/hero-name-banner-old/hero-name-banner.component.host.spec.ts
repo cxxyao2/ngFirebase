@@ -25,7 +25,7 @@ class TestHostComponent {
   }
 }
 
-fdescribe('HeroNameBannerComponent (testhost)', () => {
+describe('HeroNameBannerComponent (testhost)', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let testHost: TestHostComponent;
 

@@ -28,9 +28,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoggerInterceptor } from './http-interceptors/logger.interceptor';
 import { HeroComponent } from './heros/hero/hero.component';
 import { HerolistComponent } from './heros/herolist/herolist.component';
-import { HeroNameBannerComponent } from './heros/hero-name-banner/hero-name-banner.component';
 import { TwainComponent } from './twain/twain.component';
 import { CanvasComponent } from './canvas/canvas.component';
+import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +50,9 @@ import { CanvasComponent } from './canvas/canvas.component';
     WelcomeComponent,
     HeroComponent,
     HerolistComponent,
-    HeroNameBannerComponent,
     TwainComponent,
     CanvasComponent,
+    HeroBannerComponent,
   ],
   imports: [
     BrowserModule,
