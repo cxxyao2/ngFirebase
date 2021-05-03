@@ -1,3 +1,8 @@
 <p>hero details</p>
 <p>my id is {{ heroId }}</p>
-<p><button (click)="backToHeroCenter()">back to center</button></p>
+<p>
+  <input #newage type="text" />
+  <button (click)="backToHeroCenter()">back to center</button>
+  <button (click)="printDecorator()">print Decorator</button>
+  <button (click)="printId(newage.value)">printId</button>
+</p>

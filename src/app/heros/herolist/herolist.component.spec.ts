@@ -64,6 +64,7 @@ fdescribe('HerolistComponent', () => {
 
     expect(page.navSpy.calls.any()).toBe(true, 'navigate called');
     const navArgs = page.navSpy.calls.first().args[0];
+    // this.router.navigate(['/hero',id])
     // expect(navArgs[0]).toContain('hero', 'nav to hero URL');
     // expect(navArgs[1]).toBe(expectedHero.id, 'expected hero.id');
   }));
@@ -96,21 +97,7 @@ fdescribe('HerolistComponent', () => {
     );
   });
 
-  // TODO
 
-  // it('should tell Router to navigate when button clicked', () => {
-  //   buttonClick(); // trigger click on first button
-
-  //   // args passed to router.navigateByUrl() spy
-  //   const spy = router.navigateByUrl as jasmine.Spy;
-  //   const navArgs = spy.calls.first().arg[0];
-
-  //   const id = component.heros[0].id;
-  //   expect(navArgs).toBe(
-  //     '/hero/' + id,
-  //     'should nav to HeroComponent for first hero'
-  //   );
-  // });
 });
 
 /** Create the component and set the `page` test variables */

@@ -6,8 +6,10 @@ import { PageNoteFoundComponent } from './page-note-found/page-note-found.compon
 import { AuthGuard } from './auth/auth.guard';
 import { HerolistComponent } from './heros/herolist/herolist.component';
 import { HeroComponent } from './heros/hero/hero.component';
+import { HwoToUnsubscribeComponent } from './00decorators/hwo-to-unsubscribe/hwo-to-unsubscribe.component';
 
 const routes: Routes = [
+  { path: 'howto', component: HwoToUnsubscribeComponent },
   { path: 'herolist', component: HerolistComponent },
   { path: 'hero/:id', component: HeroComponent },
   { path: 'employee', component: EmployeeComponent },

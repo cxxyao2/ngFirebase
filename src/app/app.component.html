@@ -1,5 +1,6 @@
 <h1>{{ title }}</h1>
 <nav>
+  <a routerLink="/howto" routerLinkActive="active-link">howto</a>
   <a routerLink="/herolist" routerLinkActive="active-link">Hero list</a>
   <a routerLink="/customers" routerLinkActive="active-link">Customers</a>
   <a routerLink="/orders" routerLinkActive="active-link">Orders</a>
@@ -8,7 +9,6 @@
   <a routerLink="">Home</a>
   <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
 </nav>
-
 
 <router-outlet></router-outlet>
 <router-outlet name="popup"></router-outlet>

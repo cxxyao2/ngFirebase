@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit {
         console.log('err is', err);
       }
     );
-  }
+  } 
   addOrder(id: string): void {
     const newOrder = {
       customer: id,
