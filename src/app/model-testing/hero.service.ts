@@ -14,9 +14,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class HeroService {
   readonly heroesUrl = 'api/heroes'; // URL to web api
 

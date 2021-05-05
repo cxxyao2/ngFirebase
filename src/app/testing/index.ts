@@ -2,6 +2,7 @@ import { DebugElement } from '@angular/core';
 import { tick, ComponentFixture } from '@angular/core/testing';
 
 export * from './async-observable-helpers';
+export * from './activated-route-stub';
 
 /** Wait a tick, then detect chagnes */
 export function advance(f: ComponentFixture<any>): void {

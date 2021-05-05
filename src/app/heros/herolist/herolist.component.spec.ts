@@ -21,6 +21,7 @@ const HEROES = [
   { id: 1, name: 'Denise' },
   { id: 2, name: 'Mike' },
 ];
+// 2021 May 03. unit test ok
 fdescribe('HerolistComponent', () => {
   beforeEach(
     waitForAsync(() => {
@@ -64,6 +65,10 @@ fdescribe('HerolistComponent', () => {
 
     expect(page.navSpy.calls.any()).toBe(true, 'navigate called');
     const navArgs = page.navSpy.calls.first().args[0];
+    expect(navArgs).toBe(
+      '/hero/' + expectedHero.id,
+      'should navigate to the second hero'
+    );
     // this.router.navigate(['/hero',id])
     // expect(navArgs[0]).toContain('hero', 'nav to hero URL');
     // expect(navArgs[1]).toBe(expectedHero.id, 'expected hero.id');
@@ -96,8 +101,6 @@ fdescribe('HerolistComponent', () => {
       'HighlightDirective'
     );
   });
-
-
 });
 
 /** Create the component and set the `page` test variables */

@@ -32,6 +32,7 @@ import { TwainComponent } from './twain/twain.component';
 import { CanvasComponent } from './canvas/canvas.component';
 import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 import { HwoToUnsubscribeComponent } from './00decorators/hwo-to-unsubscribe/hwo-to-unsubscribe.component';
+import { HeroDetailComponent } from './heros/hero-detail/hero-detail.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { HwoToUnsubscribeComponent } from './00decorators/hwo-to-unsubscribe/hwo
     CanvasComponent,
     HeroBannerComponent,
     HwoToUnsubscribeComponent,
+    HeroDetailComponent,
   ],
   imports: [
     BrowserModule,
