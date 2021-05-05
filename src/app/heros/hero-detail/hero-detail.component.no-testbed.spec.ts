@@ -2,7 +2,6 @@ import { HeroDetailComponent } from './hero-detail.component';
 import { asyncData, ActivatedRouteStub } from '../../testing';
 import { Hero } from '../../service/hero';
 
-
 // 2021 May 04, test ok
 fdescribe('HeroDetailComponent- No TestBed', () => {
   let component: HeroDetailComponent;
