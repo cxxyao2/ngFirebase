@@ -33,6 +33,10 @@ import { CanvasComponent } from './canvas/canvas.component';
 import { HeroBannerComponent } from './hero-banner/hero-banner.component';
 import { HwoToUnsubscribeComponent } from './00decorators/hwo-to-unsubscribe/hwo-to-unsubscribe.component';
 import { HeroDetailComponent } from './heros/hero-detail/hero-detail.component';
+import { JwModalComponent } from './modal/jw-modal/jw-modal.component';
+import { ModalHomeComponent } from './modal-home/modal-home.component';
+import { VchildComponent } from './viewChild/vchild/vchild.component';
+import { VparentComponent } from './viewChild/vparent/vparent.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,10 @@ import { HeroDetailComponent } from './heros/hero-detail/hero-detail.component';
     HeroBannerComponent,
     HwoToUnsubscribeComponent,
     HeroDetailComponent,
+    JwModalComponent,
+    ModalHomeComponent,
+    VchildComponent,
+    VparentComponent
   ],
   imports: [
     BrowserModule,
