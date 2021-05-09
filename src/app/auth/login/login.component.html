@@ -1,9 +1,14 @@
 <p>login</p>
 <div>
   <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="name" required />
     <input type="email" formControlName="email" required />
+    <input type="password" formControlName="password" required />
     <button type="submit">Submit</button>
     <button type="button" (click)="formDir.resetForm({})">Reset</button>
+    <button type="button" (click)="loginGoogle()">login with Google</button>
+    <br />
+    <a routerLink="/signup" routerLinkActive="active-link"
+      >No account?<strong>Create one here</strong></a
+    >
   </form>
 </div>

@@ -8,8 +8,12 @@ import { HerolistComponent } from './heros/herolist/herolist.component';
 import { HeroComponent } from './heros/hero/hero.component';
 import { HwoToUnsubscribeComponent } from './00decorators/hwo-to-unsubscribe/hwo-to-unsubscribe.component';
 import { HeroDetailComponent } from './heros/hero-detail/hero-detail.component';
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
+  { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'howto', component: HwoToUnsubscribeComponent },
   { path: 'herolist', component: HerolistComponent },
   { path: 'herolist/detail', component: HeroDetailComponent },

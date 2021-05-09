@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FirebaseAuthService } from 'src/app/firebase-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +10,30 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
   myForm!: FormGroup;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private service: FirebaseAuthService) {
     this.myForm = fb.group({
-      name: ['', Validators.required],
-      email: [],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
-  }
-
-  get name() {
-    return this.myForm.get('name');
   }
 
   get email() {
     return this.myForm.get('email');
   }
 
+  get password() {
+    return this.myForm.get('password');
+  }
+
   onSubmit() {
     console.log('form valid', this.myForm.valid);
+    if (this.myForm.valid) {
+      this.service.login(this.email?.value, this.password?.value);
+    }
   }
   ngOnInit(): void {}
+
+  loginGoogle() {
+    this.service.googlelogin();
+  }
 }

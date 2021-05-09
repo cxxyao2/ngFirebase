@@ -6,8 +6,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { SvgChartComponent } from './svg-chart/svg-chart.component';
@@ -37,6 +39,8 @@ import { JwModalComponent } from './modal/jw-modal/jw-modal.component';
 import { ModalHomeComponent } from './modal-home/modal-home.component';
 import { VchildComponent } from './viewChild/vchild/vchild.component';
 import { VparentComponent } from './viewChild/vparent/vparent.component';
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +68,9 @@ import { VparentComponent } from './viewChild/vparent/vparent.component';
     JwModalComponent,
     ModalHomeComponent,
     VchildComponent,
-    VparentComponent
+    VparentComponent,
+    HomeComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +83,7 @@ import { VparentComponent } from './viewChild/vparent/vparent.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
     AuthModule,
     AppRoutingModule,
   ],
