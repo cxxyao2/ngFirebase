@@ -41,6 +41,15 @@ import { VchildComponent } from './viewChild/vchild/vchild.component';
 import { VparentComponent } from './viewChild/vparent/vparent.component';
 import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
+import { HostComponent } from './flowers/host/host.component';
+import { HostChildComponent } from './flowers/host-child/host-child.component';
+import { HostParentComponent } from './flowers/host-parent/host-parent.component';
+import { OptionalComponent } from './modifiers/optional/optional.component';
+import { SelfComponent } from './modifiers/self/self.component';
+import { SelfNoDataComponent } from './modifiers/self-no-data/self-no-data.component';
+import { SkipselfComponent } from './modifiers/skipself/skipself.component';
+import { InspectorComponent } from './inspector/inspector.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +80,15 @@ import { SignupComponent } from './signup/signup.component';
     VparentComponent,
     HomeComponent,
     SignupComponent,
+    HostComponent,
+    HostChildComponent,
+    HostParentComponent,
+    OptionalComponent,
+    SelfComponent,
+    SelfNoDataComponent,
+    SkipselfComponent,
+    InspectorComponent,
+    ChildComponent,
   ],
   imports: [
     BrowserModule,
