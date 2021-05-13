@@ -11,16 +11,20 @@ import { AnimalService } from '../animal.service';
 })
 export class ChildComponent implements OnInit {
   // constructor(public flower: FlowerService, public animal: AnimalService) {}
+  constructor(
+    @Host() public flower: FlowerService,
+    @Optional() @Host() public animal?: AnimalService
+  ) {}
 
   // constructor(
   //   public flower: FlowerService,
   //   @Optional() @Host() public animal?: AnimalService
   // ) {}
 
-  constructor(
-    @Host() public animal: AnimalService,
-    @Host() @Optional() public flower?: FlowerService
-  ) {}
+  // constructor(
+  //   @Host() public animal: AnimalService,
+  //   @Host() @Optional() public flower?: FlowerService
+  // ) {}
 
   // in the following case, AnimalService gets wrong. viewProvider.
   // but FlowerService is ok. provider

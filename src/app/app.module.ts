@@ -50,6 +50,7 @@ import { SelfNoDataComponent } from './modifiers/self-no-data/self-no-data.compo
 import { SkipselfComponent } from './modifiers/skipself/skipself.component';
 import { InspectorComponent } from './inspector/inspector.component';
 import { ChildComponent } from './child/child.component';
+import { StorageComponent } from './storage/storage.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { ChildComponent } from './child/child.component';
     SkipselfComponent,
     InspectorComponent,
     ChildComponent,
+    StorageComponent,
   ],
   imports: [
     BrowserModule,
